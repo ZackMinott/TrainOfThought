@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public float speed;
-	public float jumpVelocity;
-
-	//public Sprite normalBoy;
-	//public Sprite shadowBoy;
-	public GameObject norm;
+    [Header("Normal Attributes")]
+	public float normalSpeed;
+	public float normalJumpVelocity;
+    [Header("Shadow Attributes")]
+    public float shadowSpeed;
+    public float shadowJumpVelocity;
+    public GameObject norm;
 	public GameObject shadow;
 
-	private float speedMultiplier = 1.5f;
-	private float jumpMultiplier = 2.5f;
+    public bool isNormalForm = true;
     private bool isGround = true;
-	private bool inLight = false;
+	public bool inLight;
 	private SpriteRenderer spriteRenderer;
 
 	Rigidbody2D rb2d;
@@ -36,41 +36,70 @@ public class Player : MonoBehaviour {
             isGround = true;
         }
     }
-    // Update is called once per frame
+
+    //For checking light
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "lightsource")
+        {
+          inLight = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "lightsource")
+        {
+            isNormalForm = true;
+            inLight = false;
+        }
+    }
+
+
+
+
     void Update () {
-		//movement
-		float movement = Input.GetAxis ("Horizontal");
-		rb2d.velocity = new Vector2(movement * speed, rb2d.velocity.y);
+        if (isNormalForm)
+        {
+            //normal movement
+            float normalMovement = Input.GetAxis("Horizontal");
+            transform.position = transform.position + new Vector3(normalMovement * normalSpeed * Time.deltaTime, 0, 0);
 
 
-		//Jump
-		if (Input.GetKeyDown (KeyCode.Space) && isGround == true) {
-			rb2d.AddForce (transform.up * jumpVelocity);
-            isGround = false;
-            
-		}
+            //normal jump
+            if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+            {
+                rb2d.AddForce(new Vector2(0, normalJumpVelocity), ForceMode2D.Impulse);
+                isGround = false;
+            }
+            //switching to specific area only
+            if (Input.GetKeyDown(KeyCode.E) && inLight == true)
+            {
+                isNormalForm = false;
+            }
 
-		//Change Sprite
-		if (Input.GetKeyDown (KeyCode.E)) {
-			ChangeSprite ();
-		}
 
+        }
+        else
+        {
+            //shadow movement
+            if (isGround == true)
+            {
+            float shadowMovement = Input.GetAxis("Horizontal");
+            transform.position = transform.position + new Vector3(shadowMovement * shadowSpeed * Time.deltaTime, 0, 0);
+            }
+            //shadow jump
+            if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+            {
+                rb2d.AddForce(new Vector2(0, shadowJumpVelocity), ForceMode2D.Impulse);
+                isGround = false;
+            }
+            //switching to specific area only
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                isNormalForm = true;
+            }
+
+        }
 	}
-
-	//Sprite Change Function
-	void ChangeSprite(){
-		if (spriteRenderer.sprite == norm.GetComponent<SpriteRenderer> ().sprite) {
-			spriteRenderer.sprite = shadow.GetComponent<SpriteRenderer> ().sprite; //sets sprite image to shadow
-			speed *= speedMultiplier; //sets speed to prefab
-			jumpVelocity *= jumpMultiplier; //sets jump height to prefab
-		}
-        else {
-			spriteRenderer.sprite = norm.GetComponent<SpriteRenderer> ().sprite; //sets sprite image to normal boy
-			speed /= speedMultiplier; 
-			jumpVelocity /= jumpMultiplier;
-		}
-	}
-
-
 
 }
