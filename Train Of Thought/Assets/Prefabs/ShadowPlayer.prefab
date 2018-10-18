@@ -99,10 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a89a729f45e5a243afb8f3b6e42b945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpVelocity: 250
-  norm: {fileID: 0}
-  shadow: {fileID: 0}
+  normalSpeed: 5
+  normalJumpVelocity: 250
+  shadowSpeed: 10
+  shadowJumpVelocity: 500
+  norm: {fileID: 1441227714425704, guid: 2d7a5f17bd879c64e8dab5789a0dc12e, type: 2}
+  shadow: {fileID: 1813940707518876}
+  isNormalForm: 1
 --- !u!212 &212149066239811412
 SpriteRenderer:
   m_ObjectHideFlags: 1
