@@ -38,6 +38,7 @@ public class Player1 : MonoBehaviour {
     {
         controller = GetComponent<PlayerController>(); //grabs playerController component
         rb2d = GetComponent<Rigidbody2D>(); 
+       
 
         //sets the gravity
         normGravity = (-2 * normalJumpHeight) / Mathf.Pow(normalTimeToJump, 2);
@@ -66,8 +67,9 @@ public class Player1 : MonoBehaviour {
             Jump(normalJumpVelocity); //normal jump
             if (Input.GetKeyDown(KeyCode.E))
                 PlayerSwitch();
+            
         }
-        else if (isNormalForm == false)
+        else if (!isNormalForm)
         {
             targetVelocityX = input.x * shadowMoveSpeed;
             if(!controller.collisions.below)
@@ -75,6 +77,8 @@ public class Player1 : MonoBehaviour {
             Jump(shadowJumpVelocity); //shadow jump
             if (Input.GetKeyDown(KeyCode.E))
                 PlayerSwitch();
+            
+                
         }
         //WORK WITH THIS
 
@@ -126,6 +130,17 @@ public class Player1 : MonoBehaviour {
             inLight = true;
         }
     }
+
+    //private void OnCollisionEnter2D(Collider2D col)
+    //{
+    //    if (!isNormalForm)
+    //    {
+    //        if(col.gameObject.tag == "glass")
+    //        {
+    //            col.gameObject.layer = "default;
+    //        }
+    //    }
+    //}
 
     //for exiting light
     private void OnTriggerExit2D(Collider2D col)
