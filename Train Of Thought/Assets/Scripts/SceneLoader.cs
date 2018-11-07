@@ -9,6 +9,6 @@ public class SceneLoader : MonoBehaviour
     //loads a scene at build ndex
 	public void LoadScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        Debug.Log("loading scene");
 	}
 }
