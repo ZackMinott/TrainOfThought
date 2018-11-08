@@ -4,6 +4,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))] //Automatically adds required component to gameObject
 public class Player1 : MonoBehaviour {
+
+    [Header("Animation Attributes")]
+    public Animator My_AnimationNormal; // this takes an animation and can adjust what happens to said animation
+    public Animator My_AnimationShadow;
+    public double TimePassed; // this is in case we want to include time based scenarios
+
     [Header("Normal Atrributes")]
     public float normalJumpHeight = 4; //how high we want the character to jump
     public float normalTimeToJump = .4f; //how long character takes to reach highest point
@@ -18,8 +24,9 @@ public class Player1 : MonoBehaviour {
 
     [HideInInspector]
     public bool isNormalForm = true;
-    private bool isGrounded = true;
-    private bool inLight = false;
+    public bool isGrounded = true;
+    public bool inLight = false;
+    public bool is_Right = true; // needed to turn sprite left or right
 
     float accelerationTimeAir = .2f; //time it takes to move while in the air
     float accelerationTimeGrounded = .1f; //time it takes to move/switch directions while grounded
@@ -54,35 +61,80 @@ public class Player1 : MonoBehaviour {
         if(controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0; //keeps gravity from accumulating when colliding with an object
+            if (controller.collisions.below)
+            {
+                isGrounded = true;
+            }
         }
 
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        
 
         float targetVelocityX = 0;
+
+        /**
+        * 
+        * This is the Animation 
+        * */
+
+        My_AnimationNormal.SetFloat("Running", Mathf.Abs(input.x * normalMoveSpeed)); // Sets the parameter for running so that if the speed is above 0 it will proceed with the running animation
+        My_AnimationNormal.SetBool("Shadow Form", !isNormalForm);
+        My_AnimationNormal.SetBool("Ground", isGrounded);
+        My_AnimationShadow.SetFloat("Run", Mathf.Abs(input.x * normalMoveSpeed));
+        My_AnimationShadow.SetBool("Shadow Form", !isNormalForm);
+        My_AnimationShadow.SetBool("Ground", isGrounded);
+
+        if (is_Right)
+        {
+            if (input.x * normalMoveSpeed < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+                is_Right = false;
+            }
+        }
+        else
+        {
+            if (input.x * normalMoveSpeed > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+                is_Right = true;
+            }
+        }
+
         //WORK WITH THIS
         if (isNormalForm)
         {
             targetVelocityX = input.x * normalMoveSpeed;
             Jump(normalJumpVelocity); //normal jump
+            if (Input.GetButtonDown("Jump"))
+            {
+                isGrounded = false;
+            }
             if (Input.GetKeyDown(KeyCode.E))
+            {
                 PlayerSwitch();
-            
+            }
+
         }
         else if (!isNormalForm)
         {
             targetVelocityX = input.x * shadowMoveSpeed;
-            if(!controller.collisions.below)
+            if (!controller.collisions.below)
                 targetVelocityX = input.x * 0;
             Jump(shadowJumpVelocity); //shadow jump
             if (Input.GetKeyDown(KeyCode.E))
+            {
                 PlayerSwitch();
-            
-                
+            }
+            if (Input.GetButtonDown("Jump"))
+            {
+                isGrounded = false;
+            }
+
+
         }
         //WORK WITH THIS
 
-        
+
         //Smooth Damp gradually changes a value towards a desired goal over time
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)? accelerationTimeGrounded:0); //Smooths the players movement on switching directions
         if (isNormalForm)
