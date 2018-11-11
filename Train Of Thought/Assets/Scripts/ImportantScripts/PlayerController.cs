@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //Moves player
-    public void Move(Vector3 velocity)
+    public void Move(Vector3 velocity, bool standingOnPlatform = false)
     {
         UpdateRaycastOrigins();
         collisions.Reset();
@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour {
         }
 
         transform.Translate(velocity);
+
+        if (standingOnPlatform)
+        {
+            collisions.below = true;
+        }
     }
 
     void HorizontalCollisions(ref Vector3 velocity) //ref: any change to velocity made in this method will change the velocity in the method the variable was referenced from
@@ -68,6 +73,11 @@ public class PlayerController : MonoBehaviour {
             //if raycast hits something
             if (hit)
             {
+                if (hit.distance == 0)
+                {
+                    continue;
+                }
+
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up); //grabs the angle of the incline for moving up SLOPES
                 if(i == 0 && slopeAngle <= maxClimbAngle)
                 {

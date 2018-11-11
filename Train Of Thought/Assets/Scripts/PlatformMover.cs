@@ -8,13 +8,24 @@ public class PlatformMover : MonoBehaviour {
     public LayerMask passengerMask;
     public LayerMask collisionMask; //determines which objects we want to collide with
 
+    public Vector3[] localWaypoints; //waypoints that are displayed for visualization of paltform destinations
+    Vector3[] globalWaypoints; //waypoint used to move the platforms
+
     const float skinWidth = .015f;
+
+    public float speed;
+    public bool cyclic;
+    public float waitTime;
+    [Range(0,3)]
+    public float easeAmount;
+
+    int fromWaypointIndex;
+    float percentBetweenWaypoints;
+    float nextMoveTime;
 
     [Header("Rays Being Fired")]
     public int horizontalRayCount = 4; //Amount of rays being fired horizontally
     public int verticalRayCount = 4; //Amount of rays being fired vertically
-
-    public Vector3 speed; //speed of the object
 
     //Calculates spacing between each ray
     float horizontalRaySpacing;
@@ -24,9 +35,17 @@ public class PlatformMover : MonoBehaviour {
     RaycastOrigins raycastOrigins;
     public CollisionInfo collisions;
 
+    List<PassengerMovement> passengerMovement;
+    Dictionary<Transform,PlayerController> passengerDictionary = new Dictionary<Transform, PlayerController>();
+
     private void Start()
     {
         collider = GetComponent<BoxCollider2D>();
+        globalWaypoints = new Vector3[localWaypoints.Length]; //store all of the waypoints for use
+        for (int i = 0; i < localWaypoints.Length; i++)
+        {
+            globalWaypoints[i] = localWaypoints[i] + transform.position;
+        }
 
         CalculateRaySpacing();
     }
@@ -35,13 +54,75 @@ public class PlatformMover : MonoBehaviour {
     {
         UpdateRaycastOrigins();
 
-        MovePassengers(speed * Time.deltaTime);
-        transform.Translate(speed * Time.deltaTime);
+        Vector3 velocity = CalculatePlatformMovement();
+
+        CalculatePassengerMovement(velocity);
+
+        //movement of the platform and passengers
+        MovePassengers(true);
+        transform.Translate(velocity);
+        MovePassengers(false);
     }
 
-    void MovePassengers(Vector3 velocity)
+    float Ease(float x) //used for non-constant velocity of platofmr movement, easeAmount = 0 for constant velocity
+    {
+        float a = easeAmount + 1;
+        return Mathf.Pow(x, a) / (Mathf.Pow(x, a) + Mathf.Pow(1 - x, a));
+    }
+
+    Vector3 CalculatePlatformMovement()
+    {
+        if (Time.time < nextMoveTime)
+        {
+            return Vector3.zero;
+        }
+
+        fromWaypointIndex %= globalWaypoints.Length;
+        int toWaypointIndex = (fromWaypointIndex + 1) % globalWaypoints.Length;
+        float distanceBetweenWaypoints = Vector3.Distance(globalWaypoints[fromWaypointIndex], globalWaypoints[toWaypointIndex]);
+        percentBetweenWaypoints += Time.deltaTime * speed/distanceBetweenWaypoints;
+        percentBetweenWaypoints = Mathf.Clamp01(percentBetweenWaypoints);
+        float easedPercentBetweenWaypoints = Ease(percentBetweenWaypoints);
+
+        Vector3 newPos = Vector3.Lerp(globalWaypoints[fromWaypointIndex], globalWaypoints[toWaypointIndex], easedPercentBetweenWaypoints);
+
+        if (percentBetweenWaypoints >= 1) //determines if we have reached a waypoint
+        {
+            percentBetweenWaypoints = 0;
+            fromWaypointIndex++;
+            if (!cyclic)
+            {
+                if (fromWaypointIndex >= globalWaypoints.Length - 1)
+                {
+                    fromWaypointIndex = 0;
+                    System.Array.Reverse(globalWaypoints); //if we have reached the last waypoint, go back in reverse
+                }
+            }
+            nextMoveTime = Time.time + waitTime;
+        }
+
+        return newPos - transform.position;
+    }
+
+    void MovePassengers(bool beforeMovePlatform)
+    {
+        foreach (PassengerMovement passenger in passengerMovement) //move every passenger
+        {
+            if (!passengerDictionary.ContainsKey(passenger.transform))
+            {
+                passengerDictionary.Add(passenger.transform, passenger.transform.GetComponent<PlayerController>());
+            }
+            if (passenger.moveBeforePlatform == beforeMovePlatform)
+            {
+                passengerDictionary[passenger.transform].Move(passenger.velocity, passenger.standingOnPlatform);
+            }
+        }
+    }
+
+    void CalculatePassengerMovement(Vector3 velocity)
     {
         HashSet<Transform> movedPassengers = new HashSet<Transform>();
+        passengerMovement = new List<PassengerMovement>();
 
         float directionX = Mathf.Sign(velocity.x);
         float directionY = Mathf.Sign(velocity.y);
@@ -65,7 +146,7 @@ public class PlatformMover : MonoBehaviour {
                         float pushX = (directionY == 1) ? velocity.x : 0;
                         float pushY = velocity.y - (hit.distance - skinWidth) * directionY;
 
-                        hit.transform.Translate(new Vector3(pushX, pushY));
+                        passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), directionY == 1, true));
                     }
                 }
             }
@@ -88,9 +169,9 @@ public class PlatformMover : MonoBehaviour {
                     {
                         movedPassengers.Add(hit.transform);
                         float pushX = velocity.x - (hit.distance - skinWidth) * directionX;
-                        float pushY = 0;
+                        float pushY = -skinWidth;
 
-                        hit.transform.Translate(new Vector3(pushX, pushY));
+                        passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), false, true));
                     }
                 }
             }
@@ -116,7 +197,7 @@ public class PlatformMover : MonoBehaviour {
                         float pushX = velocity.x;
                         float pushY = velocity.y;
 
-                        hit.transform.Translate(new Vector3(pushX, pushY));
+                        passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), true, false));
                     }
                 }
             }
@@ -176,4 +257,37 @@ public class PlatformMover : MonoBehaviour {
             slopeAngleOld = slopeAngle;
         }
     }
+
+    struct PassengerMovement
+    {
+        public Transform transform;
+        public Vector3 velocity;
+        public bool standingOnPlatform;
+        public bool moveBeforePlatform;
+
+        public PassengerMovement(Transform _transform, Vector3 _velocity, bool _standingOnPlatform, bool _moveBeforePlatform)
+        {
+            transform = _transform;
+            velocity = _velocity;
+            standingOnPlatform = _standingOnPlatform;
+            moveBeforePlatform = _moveBeforePlatform;
+        }
+     }
+
+    private void OnDrawGizmos() //draws waypoints for visualization
+    {
+        if (localWaypoints != null)
+        {
+            Gizmos.color = Color.red;
+            float size = 0.3f;
+            for (int i = 0; i < localWaypoints.Length; i++)
+            {
+                //if the application is running, will display the waypoints being moved between
+                Vector3 globalWaypointPos = (Application.isPlaying)?globalWaypoints[i] : localWaypoints[i] + transform.position;
+                Gizmos.DrawLine(globalWaypointPos - Vector3.up * size, globalWaypointPos + Vector3.up * size);
+                Gizmos.DrawLine(globalWaypointPos - Vector3.left * size, globalWaypointPos + Vector3.left * size);
+            }
+        }
+    }
+
 }

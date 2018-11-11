@@ -148,7 +148,7 @@ MonoBehaviour:
   isXButton: 0
   distance: 1
   keybind: 116
-  player: {fileID: 602198486}
+  player: {fileID: 0}
 --- !u!50 &61537089
 Rigidbody2D:
   serializedVersion: 4
@@ -998,18 +998,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 582951040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.8, y: 16.9, z: -10}
+  m_LocalPosition: {x: -20.16, y: 16.26, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 165163978}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &602198486 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1125176552151298, guid: 8e365aa4d58bf72489e63e7b4d118b2e,
-    type: 2}
-  m_PrefabInternal: {fileID: 680423690}
 --- !u!1001 &629608290
 Prefab:
   m_ObjectHideFlags: 0
@@ -1127,11 +1122,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4561885979260898, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -17.8
+      value: -20.16
       objectReference: {fileID: 0}
     - target: {fileID: 4561885979260898, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 16.9
+      value: 16.26
       objectReference: {fileID: 0}
     - target: {fileID: 4561885979260898, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1603,7 +1598,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 862493416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.8, y: 16.9, z: -10}
+  m_LocalPosition: {x: -20.16, y: 16.26, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2253,11 +2248,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4067737178578294, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -25.2
+      value: -14.81
       objectReference: {fileID: 0}
     - target: {fileID: 4067737178578294, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 12.7
+      value: 18.48
       objectReference: {fileID: 0}
     - target: {fileID: 4067737178578294, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2290,6 +2285,10 @@ Prefab:
     - target: {fileID: 4067737178578294, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
       propertyPath: m_LocalScale.x
       value: 7.385177
+      objectReference: {fileID: 0}
+    - target: {fileID: 4067737178578294, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
@@ -2967,9 +2966,16 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 512
+  localWaypoints:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -8, z: 0}
+  - {x: -7.92, y: -8, z: 0}
+  speed: 2
+  cyclic: 1
+  waitTime: 1
+  easeAmount: 0
   horizontalRayCount: 4
   verticalRayCount: 4
-  speed: {x: 0, y: -1, z: 0}
 --- !u!1 &1996686554
 GameObject:
   m_ObjectHideFlags: 0
