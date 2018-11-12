@@ -21,8 +21,10 @@ public class Player1 : MonoBehaviour {
     public float shadowTimeToJump = .6f;
     public float shadowMoveSpeed = 12;
 
+    [Header("Game Objects")]
     public GameObject norm;
     public GameObject shadow;
+    public GameObject normParticles;
 
     [HideInInspector]
     public bool isNormalForm = true;
@@ -117,7 +119,7 @@ public class Player1 : MonoBehaviour {
         {
             targetVelocityX = input.x * normalMoveSpeed;
             Jump(normalJumpVelocity); //normal jump
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && inLight)
             {
                 PlayerSwitch();
             }
@@ -162,6 +164,7 @@ public class Player1 : MonoBehaviour {
             isNormalForm = false;
             norm.SetActive(false);
             shadow.SetActive(true);
+            normParticles.SetActive(false);
             changed = false;
         }
         else if (isNormalForm == false)
@@ -169,6 +172,9 @@ public class Player1 : MonoBehaviour {
             isNormalForm = true;
             shadow.SetActive(false);
             norm.SetActive(true);
+            normParticles.SetActive(true);
+            if (!inLight)
+                normParticles.SetActive(false);
             changed = false;
         }
     }
@@ -187,19 +193,10 @@ public class Player1 : MonoBehaviour {
         if (col.gameObject.tag == "lightsource")
         {
             inLight = true;
+            normParticles.SetActive(true);
         }
     }
 
-    //private void OnCollisionEnter2D(Collider2D col)
-    //{
-    //    if (!isNormalForm)
-    //    {
-    //        if(col.gameObject.tag == "glass")
-    //        {
-    //            col.gameObject.layer = "default;
-    //        }
-    //    }
-    //}
 
     //for exiting light
     private void OnTriggerExit2D(Collider2D col)
@@ -207,6 +204,7 @@ public class Player1 : MonoBehaviour {
         if (col.gameObject.tag == "lightsource")
         {
             inLight = false;
+            normParticles.SetActive(false);
             if (!isNormalForm) //switches back to normal when leaving light source
                 PlayerSwitch();
         }
