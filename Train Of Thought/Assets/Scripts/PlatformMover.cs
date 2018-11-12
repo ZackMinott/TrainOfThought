@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))] //adds boxCollider2D to gameObject
+[RequireComponent(typeof(Rigidbody2D))] //adds rigidbody2D to gameObject
 public class PlatformMover : MonoBehaviour {
 
     public LayerMask passengerMask;
@@ -19,6 +20,11 @@ public class PlatformMover : MonoBehaviour {
     [Range(0,3)]
     public float easeAmount;
 
+    public bool movementActive = true; //determines if the platform will move
+    public bool activateOnTouch = false; //platform activates when touched
+    public bool buttonActivated = false; //platform activates when a button is pressed
+    public GameObject button;
+
     int fromWaypointIndex;
     float percentBetweenWaypoints;
     float nextMoveTime;
@@ -32,6 +38,7 @@ public class PlatformMover : MonoBehaviour {
     float verticalRaySpacing;
 
     BoxCollider2D collider;
+    Rigidbody2D rigidbody;
     RaycastOrigins raycastOrigins;
     public CollisionInfo collisions;
 
@@ -41,6 +48,8 @@ public class PlatformMover : MonoBehaviour {
     private void Start()
     {
         collider = GetComponent<BoxCollider2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
+
         globalWaypoints = new Vector3[localWaypoints.Length]; //store all of the waypoints for use
         for (int i = 0; i < localWaypoints.Length; i++)
         {
@@ -52,16 +61,43 @@ public class PlatformMover : MonoBehaviour {
 
     public void Update()
     {
+        if (buttonActivated)
+        {
+            if (button.GetComponent<KeyButtonScript>() != null? button.GetComponent<KeyButtonScript>().getPressed() : button.GetComponent<ButtonScript>() != null? button.GetComponent<ButtonScript>().getPressed() : false)
+            {
+                movementActive = true;
+            }
+        }
         UpdateRaycastOrigins();
+        if (movementActive)
+        {
 
-        Vector3 velocity = CalculatePlatformMovement();
+            Vector3 velocity = CalculatePlatformMovement();
 
-        CalculatePassengerMovement(velocity);
+            CalculatePassengerMovement(velocity);
 
-        //movement of the platform and passengers
-        MovePassengers(true);
-        transform.Translate(velocity);
-        MovePassengers(false);
+            //movement of the platform and passengers
+            MovePassengers(true);
+            transform.Translate(velocity);
+            MovePassengers(false);
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        if (activateOnTouch)
+        {
+            movementActive = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if (activateOnTouch)
+        {
+            movementActive = false;
+        }
     }
 
     float Ease(float x) //used for non-constant velocity of platofmr movement, easeAmount = 0 for constant velocity

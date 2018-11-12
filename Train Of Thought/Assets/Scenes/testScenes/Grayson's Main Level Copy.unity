@@ -148,7 +148,7 @@ MonoBehaviour:
   isXButton: 0
   distance: 1
   keybind: 116
-  player: {fileID: 0}
+  player: {fileID: 1236768903}
 --- !u!50 &61537089
 Rigidbody2D:
   serializedVersion: 4
@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 61537087}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.2, y: 40, z: 0}
+  m_LocalPosition: {x: -23, y: 13.31, z: 0}
   m_LocalScale: {x: 1.4324809, y: 0.9775, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1187,6 +1187,16 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 50457204411073858, guid: 8e365aa4d58bf72489e63e7b4d118b2e,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50457204411073858, guid: 8e365aa4d58bf72489e63e7b4d118b2e,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
   m_IsPrefabAsset: 0
@@ -1446,7 +1456,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 805894433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.7, y: 37, z: 0}
+  m_LocalPosition: {x: -23, y: 16.27, z: 0}
   m_LocalScale: {x: 1.4324809, y: 0.9775, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1464,7 +1474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressDirectionPositive: 1
-  isXButton: 0
+  isXButton: 1
   distance: 1
 --- !u!1001 &817550315
 Prefab:
@@ -1985,6 +1995,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1236768903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1356198851079968, guid: 8e365aa4d58bf72489e63e7b4d118b2e,
+    type: 2}
+  m_PrefabInternal: {fileID: 680423690}
 --- !u!1 &1244868155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,11 +2263,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4067737178578294, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14.81
+      value: -21.71
       objectReference: {fileID: 0}
     - target: {fileID: 4067737178578294, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 18.48
+      value: 11.94
       objectReference: {fileID: 0}
     - target: {fileID: 4067737178578294, guid: 9ba50ff434f2e6d48bd2716c2e1f5221, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2974,8 +2989,32 @@ MonoBehaviour:
   cyclic: 1
   waitTime: 1
   easeAmount: 0
+  movementActive: 0
+  activateOnTouch: 0
+  buttonActivated: 1
+  button: {fileID: 805894433}
   horizontalRayCount: 4
   verticalRayCount: 4
+--- !u!50 &1984955590
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1984955584}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1996686554
 GameObject:
   m_ObjectHideFlags: 0
