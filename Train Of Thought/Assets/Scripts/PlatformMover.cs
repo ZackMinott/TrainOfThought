@@ -4,7 +4,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))] //adds boxCollider2D to gameObject
 [RequireComponent(typeof(Rigidbody2D))] //adds rigidbody2D to gameObject
+<<<<<<< HEAD
 public class PlatformMover : MonoBehaviour {
+=======
+public class PlatformMover : MonoBehaviour
+{
+>>>>>>> 9adab202c8532a7549f6fa4e0f6ec5c5844462bb
 
     public LayerMask passengerMask;
     public LayerMask collisionMask; //determines which objects we want to collide with
@@ -17,12 +22,17 @@ public class PlatformMover : MonoBehaviour {
     public float speed;
     public bool cyclic;
     public float waitTime;
-    [Range(0,3)]
+    [Range(0, 3)]
     public float easeAmount;
 
     public bool movementActive = true; //determines if the platform will move
     public bool activateOnTouch = false; //platform activates when touched
     public bool buttonActivated = false; //platform activates when a button is pressed
+<<<<<<< HEAD
+=======
+    public bool moveOnce = false; //platform only moves once
+    bool notMoved = true;
+>>>>>>> 9adab202c8532a7549f6fa4e0f6ec5c5844462bb
     public GameObject button;
 
     int fromWaypointIndex;
@@ -43,12 +53,17 @@ public class PlatformMover : MonoBehaviour {
     public CollisionInfo collisions;
 
     List<PassengerMovement> passengerMovement;
-    Dictionary<Transform,PlayerController> passengerDictionary = new Dictionary<Transform, PlayerController>();
+    Dictionary<Transform, PlayerController> passengerDictionary = new Dictionary<Transform, PlayerController>();
 
     private void Start()
     {
         collider = GetComponent<BoxCollider2D>();
         rigidbody = GetComponent<Rigidbody2D>();
+<<<<<<< HEAD
+=======
+        rigidbody.isKinematic = true;
+
+>>>>>>> 9adab202c8532a7549f6fa4e0f6ec5c5844462bb
 
         globalWaypoints = new Vector3[localWaypoints.Length]; //store all of the waypoints for use
         for (int i = 0; i < localWaypoints.Length; i++)
@@ -63,15 +78,25 @@ public class PlatformMover : MonoBehaviour {
     {
         if (buttonActivated)
         {
+<<<<<<< HEAD
             if (button.GetComponent<KeyButtonScript>() != null? button.GetComponent<KeyButtonScript>().getPressed() : button.GetComponent<ButtonScript>() != null? button.GetComponent<ButtonScript>().getPressed() : false)
+=======
+            if (button.GetComponent<KeyButtonScript>() != null ? button.GetComponent<KeyButtonScript>().getPressed() : button.GetComponent<ButtonScript>() != null ? button.GetComponent<ButtonScript>().getPressed() : false)
+>>>>>>> 9adab202c8532a7549f6fa4e0f6ec5c5844462bb
             {
                 movementActive = true;
             }
         }
         UpdateRaycastOrigins();
+<<<<<<< HEAD
         if (movementActive)
         {
 
+=======
+        if (movementActive && notMoved)
+        {
+            Debug.Log("test");
+>>>>>>> 9adab202c8532a7549f6fa4e0f6ec5c5844462bb
             Vector3 velocity = CalculatePlatformMovement();
 
             CalculatePassengerMovement(velocity);
@@ -85,6 +110,7 @@ public class PlatformMover : MonoBehaviour {
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+<<<<<<< HEAD
         
         if (activateOnTouch)
         {
@@ -92,6 +118,15 @@ public class PlatformMover : MonoBehaviour {
         }
     }
 
+=======
+
+        if (activateOnTouch)
+        {
+            movementActive = true;
+        }
+    }
+
+>>>>>>> 9adab202c8532a7549f6fa4e0f6ec5c5844462bb
     public void OnCollisionExit2D(Collision2D collision)
     {
         if (activateOnTouch)
@@ -116,7 +151,7 @@ public class PlatformMover : MonoBehaviour {
         fromWaypointIndex %= globalWaypoints.Length;
         int toWaypointIndex = (fromWaypointIndex + 1) % globalWaypoints.Length;
         float distanceBetweenWaypoints = Vector3.Distance(globalWaypoints[fromWaypointIndex], globalWaypoints[toWaypointIndex]);
-        percentBetweenWaypoints += Time.deltaTime * speed/distanceBetweenWaypoints;
+        percentBetweenWaypoints += Time.deltaTime * speed / distanceBetweenWaypoints;
         percentBetweenWaypoints = Mathf.Clamp01(percentBetweenWaypoints);
         float easedPercentBetweenWaypoints = Ease(percentBetweenWaypoints);
 
@@ -132,6 +167,10 @@ public class PlatformMover : MonoBehaviour {
                 {
                     fromWaypointIndex = 0;
                     System.Array.Reverse(globalWaypoints); //if we have reached the last waypoint, go back in reverse
+                    if (moveOnce)
+                    {
+                        notMoved = false;
+                    }
                 }
             }
             nextMoveTime = Time.time + waitTime;
@@ -222,7 +261,7 @@ public class PlatformMover : MonoBehaviour {
             for (int i = 0; i < verticalRayCount; i++)
             {
                 Vector2 rayOrigin = raycastOrigins.topLeft + Vector2.right * (verticalRaySpacing * i); //if moving down set raycast origins to bottomleft and if moving up set raycast origins to top left
-    
+
                 RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, rayLength, passengerMask);
 
                 if (hit) //if the raycast hits something
@@ -308,7 +347,7 @@ public class PlatformMover : MonoBehaviour {
             standingOnPlatform = _standingOnPlatform;
             moveBeforePlatform = _moveBeforePlatform;
         }
-     }
+    }
 
     private void OnDrawGizmos() //draws waypoints for visualization
     {
@@ -319,7 +358,7 @@ public class PlatformMover : MonoBehaviour {
             for (int i = 0; i < localWaypoints.Length; i++)
             {
                 //if the application is running, will display the waypoints being moved between
-                Vector3 globalWaypointPos = (Application.isPlaying)?globalWaypoints[i] : localWaypoints[i] + transform.position;
+                Vector3 globalWaypointPos = (Application.isPlaying) ? globalWaypoints[i] : localWaypoints[i] + transform.position;
                 Gizmos.DrawLine(globalWaypointPos - Vector3.up * size, globalWaypointPos + Vector3.up * size);
                 Gizmos.DrawLine(globalWaypointPos - Vector3.left * size, globalWaypointPos + Vector3.left * size);
             }
