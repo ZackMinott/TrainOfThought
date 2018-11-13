@@ -25,6 +25,7 @@ public class Player1 : MonoBehaviour {
     public GameObject norm;
     public GameObject shadow;
     public GameObject normParticles;
+    public GameObject virtualCamera;
 
     [HideInInspector]
     public bool isNormalForm = true;
@@ -135,11 +136,10 @@ public class Player1 : MonoBehaviour {
             {
                 PlayerSwitch();
             }
-
-
         }
         //WORK WITH THIS
 
+        
 
         //Smooth Damp gradually changes a value towards a desired goal over time
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)? accelerationTimeGrounded:0); //Smooths the players movement on switching directions
@@ -166,6 +166,7 @@ public class Player1 : MonoBehaviour {
             shadow.SetActive(true);
             normParticles.SetActive(false);
             changed = false;
+            virtualCamera.GetComponent<CameraShake>().initiateShake();
         }
         else if (isNormalForm == false)
         {
@@ -176,6 +177,7 @@ public class Player1 : MonoBehaviour {
             if (!inLight)
                 normParticles.SetActive(false);
             changed = false;
+            virtualCamera.GetComponent<CameraShake>().initiateShake();
         }
     }
 
