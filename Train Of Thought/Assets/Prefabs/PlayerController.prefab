@@ -148,9 +148,9 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1653469247893604}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 0.0001
   m_LinearDrag: 0
@@ -245,7 +245,8 @@ MonoBehaviour:
   norm: {fileID: 1356198851079968}
   shadow: {fileID: 1977099849913504}
   normParticles: {fileID: 1987208670718766}
-  virtualCamera: {fileID: 0}
+  virtualCamera: {fileID: 1423959089895414, guid: b2e5f30f2fe733d4c88591e02581124c,
+    type: 2}
   isNormalForm: 1
   isGrounded: 1
   inLight: 0

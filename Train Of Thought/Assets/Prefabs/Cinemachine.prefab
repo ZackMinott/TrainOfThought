@@ -146,7 +146,7 @@ MonoBehaviour:
   ShakeAmplitude: 1.2
   ShakeFrequency: 2
   VirtualCamera: {fileID: 114930636322538566}
-  player: {fileID: 0}
+  player: {fileID: 114529501007772250, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
 --- !u!114 &114646825066830000
 MonoBehaviour:
   m_ObjectHideFlags: 1
