@@ -33,6 +33,7 @@ public class Player1 : MonoBehaviour {
     public bool inLight = false;
     public bool is_Right = true; // needed to turn sprite left or right
     public bool changed = false;
+    public bool inGlass = false;
 
     float accelerationTimeAir = .2f; //time it takes to move while in the air
     float accelerationTimeGrounded = .1f; //time it takes to move/switch directions while grounded
@@ -132,7 +133,7 @@ public class Player1 : MonoBehaviour {
             if (!controller.collisions.below)
                 targetVelocityX = input.x * 0;
             Jump(shadowJumpVelocity); //shadow jump
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !inGlass)
             {
                 PlayerSwitch();
             }
