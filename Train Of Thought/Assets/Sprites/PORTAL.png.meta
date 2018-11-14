@@ -1,0 +1,1033 @@
+fileFormatVersion: 2
+guid: e67648983802c504886bbc872338431e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PORTAL_0
+    21300002: PORTAL_1
+    21300004: PORTAL_2
+    21300006: PORTAL_3
+    21300008: PORTAL_4
+    21300010: PORTAL_5
+    21300012: PORTAL_6
+    21300014: PORTAL_7
+    21300016: PORTAL_8
+    21300018: PORTAL_9
+    21300020: PORTAL_10
+    21300022: PORTAL_11
+    21300024: PORTAL_12
+    21300026: PORTAL_13
+    21300028: PORTAL_14
+    21300030: PORTAL_15
+    21300032: PORTAL_16
+    21300034: PORTAL_17
+    21300036: PORTAL_18
+    21300038: PORTAL_19
+    21300040: PORTAL_20
+    21300042: PORTAL_21
+    21300044: PORTAL_22
+    21300046: PORTAL_23
+    21300048: PORTAL_24
+    21300050: PORTAL_25
+    21300052: PORTAL_26
+    21300054: PORTAL_27
+    21300056: PORTAL_28
+    21300058: PORTAL_29
+    21300060: PORTAL_30
+    21300062: PORTAL_31
+    21300064: PORTAL_32
+    21300066: PORTAL_33
+    21300068: PORTAL_34
+    21300070: PORTAL_35
+    21300072: PORTAL_36
+    21300074: PORTAL_37
+    21300076: PORTAL_38
+    21300078: PORTAL_39
+    21300080: PORTAL_40
+    21300082: PORTAL_41
+    21300084: PORTAL_42
+    21300086: PORTAL_43
+    21300088: PORTAL_44
+    21300090: PORTAL_45
+    21300092: PORTAL_46
+    21300094: PORTAL_47
+    21300096: PORTAL_48
+    21300098: PORTAL_49
+    21300100: PORTAL_50
+    21300102: PORTAL_51
+    21300104: PORTAL_52
+    21300106: PORTAL_53
+    21300108: PORTAL_54
+    21300110: PORTAL_55
+    21300112: PORTAL_56
+    21300114: PORTAL_57
+    21300116: PORTAL_58
+    21300118: PORTAL_59
+    21300120: PORTAL_60
+    21300122: PORTAL_61
+    21300124: PORTAL_62
+    21300126: PORTAL_63
+    21300128: PORTAL_64
+    21300130: PORTAL_65
+    21300132: PORTAL_66
+    21300134: PORTAL_67
+    21300136: PORTAL_68
+    21300138: PORTAL_69
+    21300140: PORTAL_70
+    21300142: PORTAL_71
+    21300144: PORTAL_72
+    21300146: PORTAL_73
+    21300148: PORTAL_74
+    21300150: PORTAL_75
+    21300152: PORTAL_76
+    21300154: PORTAL_77
+    21300156: PORTAL_78
+    21300158: PORTAL_79
+    21300160: PORTAL_80
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PORTAL_0
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 10228
+        width: 237
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59e8698b11eae042912ee82c72367c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_1
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 10223
+        width: 226
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bbedc681634684d811029c21dcfa55
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_2
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 10236
+        width: 209
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7070b80861da394fba4a8fb0c330d52
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_3
+      rect:
+        serializedVersion: 2
+        x: 3124
+        y: 10209
+        width: 232
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cac399b5a7bbbb640b93c3cad48c502f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_4
+      rect:
+        serializedVersion: 2
+        x: 4047
+        y: 10207
+        width: 179
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f3a91ae76f6d334cb16ed65044adc7e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_5
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 9010
+        width: 216
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7667e5358899a8c48b89bd505ba41a60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_6
+      rect:
+        serializedVersion: 2
+        x: 1268
+        y: 9015
+        width: 227
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f9371a6a0972244a199ae012fcecf3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_7
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 9026
+        width: 243
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b755dd258f97c4d9a524722ff24e12
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_8
+      rect:
+        serializedVersion: 2
+        x: 3088
+        y: 9027
+        width: 258
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f3954520068dc4fa5a108a0a3a5a9e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_9
+      rect:
+        serializedVersion: 2
+        x: 4068
+        y: 9026
+        width: 185
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68bb54cd39d449842ade3867f8af8edc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_15
+      rect:
+        serializedVersion: 2
+        x: 3972
+        y: 7742
+        width: 299
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79eb80157cbbf614a8b36552fa70642f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_18
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 7753
+        width: 184
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df1e497e400331f4f80dd86b14efa905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_20
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 7739
+        width: 318
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1982b913faccb55479d92b6f9af6cc3f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_21
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 7796
+        width: 248
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62df0d29ac0f30444926f457cbab9a0c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_23
+      rect:
+        serializedVersion: 2
+        x: 3047
+        y: 7733
+        width: 291
+        height: 289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250afb1cf5459954a82fc534d20e83b2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_32
+      rect:
+        serializedVersion: 2
+        x: 2101
+        y: 6510
+        width: 415
+        height: 383
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044235d768c71d249b8bf2387a83c0f9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_33
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 6491
+        width: 278
+        height: 343
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1456216f78cbe7642a989bc81179e811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_34
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 6482
+        width: 378
+        height: 357
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 539b0ed8068827e4d85b041fd0aee5c1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_36
+      rect:
+        serializedVersion: 2
+        x: 3125
+        y: 6560
+        width: 243
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d25ca8130e51804d9b2a500fa7ab248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_37
+      rect:
+        serializedVersion: 2
+        x: 4047
+        y: 6558
+        width: 243
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57eaa5f7ec480a24d8e3d36bf3b02e28
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_41
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 5362
+        width: 248
+        height: 231
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa1d5578d9969244cbeb8a55e1286b82
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_42
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 5366
+        width: 252
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae7587dbae1988d4194e2fd08e37856f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_43
+      rect:
+        serializedVersion: 2
+        x: 2154
+        y: 5350
+        width: 268
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f55c30195711c45886c2abe2600de7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_45
+      rect:
+        serializedVersion: 2
+        x: 3048
+        y: 5317
+        width: 357
+        height: 364
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 193969946faa65d4d8153c35b0a52728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_46
+      rect:
+        serializedVersion: 2
+        x: 3975
+        y: 5325
+        width: 360
+        height: 364
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711994ee34dd2134998411de415609be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_50
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 4137
+        width: 327
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8882510dd18ec948811a470cd8edeb8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_51
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 4144
+        width: 316
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1038312c2b14b1a43ab1da7b5986618e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_52
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 4133
+        width: 316
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76430551c1213d74e9adf1d1ca199faa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_53
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 4089
+        width: 353
+        height: 380
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060b6e7fd9f5af74bb0001d8b7ae3757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_54
+      rect:
+        serializedVersion: 2
+        x: 3974
+        y: 4061
+        width: 375
+        height: 407
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5262772fec8bd674e9a0d344383c8e3a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_60
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 2945
+        width: 316
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc92cd3709e49d8478ca12292fbc6f36
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_61
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 2942
+        width: 316
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef8b2631343154844a6053bd120066dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_62
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 2935
+        width: 320
+        height: 337
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ade6cdab856d9f46be5d065f1fe2128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_63
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 2898
+        width: 358
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29db276d73e917419066d9551a25864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_64
+      rect:
+        serializedVersion: 2
+        x: 3963
+        y: 2874
+        width: 400
+        height: 403
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8b5d9495ab0f9e4da5ace603aec5503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_70
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1753
+        width: 316
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d355a166dec00348ac250b67f12caf7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_71
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 1743
+        width: 316
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f092227bf03be0b4ea9ebe0f06870bb5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_72
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 1738
+        width: 320
+        height: 332
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7190c06e193a0a44b7a263d0c94f028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_73
+      rect:
+        serializedVersion: 2
+        x: 3061
+        y: 1697
+        width: 351
+        height: 383
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb75d5931940704fbdfd8ab87c1d8d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_74
+      rect:
+        serializedVersion: 2
+        x: 3959
+        y: 1670
+        width: 406
+        height: 405
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7648d658d4257b409497c2da1c13fde
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PORTAL_80
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 551
+        width: 316
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dee0b97a032de847aea5f26cfcac6b6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 9eb1804897294d448ac96a91837952f1
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
