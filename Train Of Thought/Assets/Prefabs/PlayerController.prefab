@@ -245,8 +245,7 @@ MonoBehaviour:
   norm: {fileID: 1356198851079968}
   shadow: {fileID: 1977099849913504}
   normParticles: {fileID: 1987208670718766}
-  virtualCamera: {fileID: 1423959089895414, guid: b2e5f30f2fe733d4c88591e02581124c,
-    type: 2}
+  virtualCamera: {fileID: 0}
   isNormalForm: 1
   isGrounded: 1
   inLight: 0
