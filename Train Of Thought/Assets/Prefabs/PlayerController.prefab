@@ -252,7 +252,7 @@ MonoBehaviour:
   is_Right: 1
   changed: 0
   inGlass: 0
-  playerCanMove: 0
+  playerCanMove: 1
 --- !u!114 &114553090148327190
 MonoBehaviour:
   m_ObjectHideFlags: 1
