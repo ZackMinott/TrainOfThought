@@ -11,6 +11,7 @@ TagManager:
   - shadowBoy
   - glass
   - Effects
+  - portal
   layers:
   - Default
   - TransparentFX
