@@ -8212,7 +8212,7 @@ ParticleSystem:
       type: 0
       properties: 0
   LightsModule:
-    enabled: 0
+    enabled: 1
     ratio: 1
     light: {fileID: 0}
     randomDistribution: 1
@@ -8327,7 +8327,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 30
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
