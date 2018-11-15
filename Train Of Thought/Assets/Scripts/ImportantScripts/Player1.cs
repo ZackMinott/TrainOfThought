@@ -34,6 +34,7 @@ public class Player1 : MonoBehaviour {
     public bool is_Right = true; // needed to turn sprite left or right
     public bool changed = false;
     public bool inGlass = false;
+    public bool playerCanMove = true; //will change back to false
 
     float accelerationTimeAir = .2f; //time it takes to move while in the air
     float accelerationTimeGrounded = .1f; //time it takes to move/switch directions while grounded
@@ -152,7 +153,8 @@ public class Player1 : MonoBehaviour {
             velocity.y += shadowGravity * Time.deltaTime; //applies gravity to velocity
         }
         
-        controller.Move(velocity * Time.deltaTime);
+        if(playerCanMove)
+            controller.Move(velocity * Time.deltaTime);
 
 
     }
