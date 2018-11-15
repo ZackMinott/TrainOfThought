@@ -21,12 +21,14 @@ public class PlatformMover : MonoBehaviour
     [Range(0, 3)]
     public float easeAmount;
 
-    public bool movementActive = true; //determines if the platform will move
+    bool movementActive = true; //determines if the platform will move
     public bool activateOnTouch = false; //platform activates when touched
     public bool buttonActivated = false; //platform activates when a button is pressed
     public bool moveOnce = false; //platform only moves once
+    public bool moveAfterOtherPlatform; //platform moves after another platform has moved
     bool notMoved = true;
     public GameObject button;
+    public GameObject platform;
 
     int fromWaypointIndex;
     float percentBetweenWaypoints;
@@ -54,6 +56,10 @@ public class PlatformMover : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.isKinematic = true;
 
+        if (activateOnTouch || buttonActivated || moveAfterOtherPlatform)
+        {
+            movementActive = false;
+        }
 
         globalWaypoints = new Vector3[localWaypoints.Length]; //store all of the waypoints for use
         for (int i = 0; i < localWaypoints.Length; i++)
@@ -73,10 +79,16 @@ public class PlatformMover : MonoBehaviour
                 movementActive = true;
             }
         }
-        UpdateRaycastOrigins();
-        if (movementActive && notMoved)
+        if (moveAfterOtherPlatform)
         {
-            Debug.Log("test");
+            if (!platform.GetComponent<PlatformMover>().getNotMoved())
+            {
+                movementActive = true;
+            }
+        }
+        UpdateRaycastOrigins();
+        if (movementActive && notMoved && ((platform != null)? !platform.GetComponent<PlatformMover>().getNotMoved() : true))
+        {
             Vector3 velocity = CalculatePlatformMovement();
 
             CalculatePassengerMovement(velocity);
@@ -105,6 +117,11 @@ public class PlatformMover : MonoBehaviour
         }
     }
 
+    public bool getNotMoved()
+    {
+        return notMoved;
+    }
+
     float Ease(float x) //used for non-constant velocity of platofmr movement, easeAmount = 0 for constant velocity
     {
         float a = easeAmount + 1;
@@ -121,7 +138,7 @@ public class PlatformMover : MonoBehaviour
         fromWaypointIndex %= globalWaypoints.Length;
         int toWaypointIndex = (fromWaypointIndex + 1) % globalWaypoints.Length;
         float distanceBetweenWaypoints = Vector3.Distance(globalWaypoints[fromWaypointIndex], globalWaypoints[toWaypointIndex]);
-        percentBetweenWaypoints += Time.deltaTime * speed / distanceBetweenWaypoints;
+        percentBetweenWaypoints += (Time.deltaTime * speed) / distanceBetweenWaypoints;
         percentBetweenWaypoints = Mathf.Clamp01(percentBetweenWaypoints);
         float easedPercentBetweenWaypoints = Ease(percentBetweenWaypoints);
 
