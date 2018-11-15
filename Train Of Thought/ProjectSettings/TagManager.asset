@@ -10,6 +10,7 @@ TagManager:
   - normalBoy
   - shadowBoy
   - glass
+  - Effects
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - 
   - Player
   - Obstacle
-  - 
+  - BG
   - 
   - 
   - 
