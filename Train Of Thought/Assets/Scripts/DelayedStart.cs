@@ -6,6 +6,7 @@ public class DelayedStart : MonoBehaviour {
     public GameObject PlayerController;
     public GameObject FFStart;
     public GameObject FFFormBox;
+   
     public GameObject FFEnd;
     public GameObject FFLight;
     public GameObject Shadow;
@@ -23,6 +24,7 @@ public class DelayedStart : MonoBehaviour {
         if (Input.GetButtonDown("Horizontal") && goPlayEnd == true)
         {
             FFFormBox.SetActive(false);
+          
             FFEnd.SetActive(true);
             Normal.SetActive(true);
             Shadow.SetActive(false);
@@ -42,6 +44,7 @@ public class DelayedStart : MonoBehaviour {
     public void PlayIdle()
     {
         FFFormBox.SetActive(true);
+      
         Shadow.SetActive(true);
         Normal.SetActive(false);
         FFLight.SetActive(true);
