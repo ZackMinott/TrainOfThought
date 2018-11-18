@@ -275,33 +275,33 @@ public class PlatformMover : MonoBehaviour
     }
 
     //holds data that will not be modified later
-    struct RaycastOrigins
-    {
-        public Vector2 topLeft, topRight;
-        public Vector2 bottomLeft, bottomRight;
-    }
+    //struct RaycastOrigins
+    //{
+    //    public Vector2 topLeft, topRight;
+    //    public Vector2 bottomLeft, bottomRight;
+    //}
 
-    public struct CollisionInfo
-    {
-        public bool above, below;
-        public bool left, right;
+    //public struct CollisionInfo
+    //{
+    //    public bool above, below;
+    //    public bool left, right;
 
-        public bool climbingSlope;
-        public bool descendingSlope;
-        public float slopeAngle, slopeAngleOld;
-        public Vector3 velocityOld;
+    //    public bool climbingSlope;
+    //    public bool descendingSlope;
+    //    public float slopeAngle, slopeAngleOld;
+    //    public Vector3 velocityOld;
 
-        //resets all bools to false
-        public void Reset()
-        {
-            above = below = false;
-            left = right = false;
-            climbingSlope = false;
-            descendingSlope = false;
+    //    //resets all bools to false
+    //    public void Reset()
+    //    {
+    //        above = below = false;
+    //        left = right = false;
+    //        climbingSlope = false;
+    //        descendingSlope = false;
 
-            slopeAngleOld = slopeAngle;
-        }
-    }
+    //        slopeAngleOld = slopeAngle;
+    //    }
+    //}
 
     struct PassengerMovement
     {
