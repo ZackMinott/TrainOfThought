@@ -21,12 +21,14 @@ public class PlatformMover : MonoBehaviour
     [Range(0, 3)]
     public float easeAmount;
 
-    public bool movementActive = true; //determines if the platform will move
+    bool movementActive = true; //determines if the platform will move
     public bool activateOnTouch = false; //platform activates when touched
     public bool buttonActivated = false; //platform activates when a button is pressed
     public bool moveOnce = false; //platform only moves once
+    public bool moveAfterOtherPlatform; //platform moves after another platform has moved
     bool notMoved = true;
     public GameObject button;
+    public GameObject platform;
 
     int fromWaypointIndex;
     float percentBetweenWaypoints;
@@ -43,7 +45,6 @@ public class PlatformMover : MonoBehaviour
     BoxCollider2D collider;
     Rigidbody2D rigidbody;
     RaycastOrigins raycastOrigins;
-    public CollisionInfo collisions;
 
     List<PassengerMovement> passengerMovement;
     Dictionary<Transform, PlayerController> passengerDictionary = new Dictionary<Transform, PlayerController>();
@@ -54,6 +55,10 @@ public class PlatformMover : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.isKinematic = true;
 
+        if (activateOnTouch || buttonActivated || moveAfterOtherPlatform)
+        {
+            movementActive = false;
+        }
 
         globalWaypoints = new Vector3[localWaypoints.Length]; //store all of the waypoints for use
         for (int i = 0; i < localWaypoints.Length; i++)
@@ -73,10 +78,16 @@ public class PlatformMover : MonoBehaviour
                 movementActive = true;
             }
         }
-        UpdateRaycastOrigins();
-        if (movementActive && notMoved)
+        if (moveAfterOtherPlatform)
         {
-            Debug.Log("test");
+            if (!platform.GetComponent<PlatformMover>().getNotMoved())
+            {
+                movementActive = true;
+            }
+        }
+        UpdateRaycastOrigins();
+        if (movementActive && notMoved && ((platform != null)? !platform.GetComponent<PlatformMover>().getNotMoved() : true))
+        {
             Vector3 velocity = CalculatePlatformMovement();
 
             CalculatePassengerMovement(velocity);
@@ -97,12 +108,17 @@ public class PlatformMover : MonoBehaviour
         }
     }
 
-    public void OnCollisionExit2D(Collision2D collision)
+   public void OnCollisionExit2D(Collision2D collision)
     {
         if (activateOnTouch)
         {
             movementActive = false;
         }
+    }
+
+    public bool getNotMoved()
+    {
+        return notMoved;
     }
 
     float Ease(float x) //used for non-constant velocity of platofmr movement, easeAmount = 0 for constant velocity
@@ -121,7 +137,7 @@ public class PlatformMover : MonoBehaviour
         fromWaypointIndex %= globalWaypoints.Length;
         int toWaypointIndex = (fromWaypointIndex + 1) % globalWaypoints.Length;
         float distanceBetweenWaypoints = Vector3.Distance(globalWaypoints[fromWaypointIndex], globalWaypoints[toWaypointIndex]);
-        percentBetweenWaypoints += Time.deltaTime * speed / distanceBetweenWaypoints;
+        percentBetweenWaypoints += (Time.deltaTime * speed) / distanceBetweenWaypoints;
         percentBetweenWaypoints = Mathf.Clamp01(percentBetweenWaypoints);
         float easedPercentBetweenWaypoints = Ease(percentBetweenWaypoints);
 
@@ -189,7 +205,7 @@ public class PlatformMover : MonoBehaviour
                     {
                         movedPassengers.Add(hit.transform);
                         float pushX = (directionY == 1) ? velocity.x : 0;
-                        float pushY = velocity.y - (hit.distance - skinWidth) * directionY;
+                        float pushY = (velocity.y - (hit.distance - skinWidth)) * directionY;
 
                         passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), directionY == 1, true));
                     }
@@ -241,7 +257,6 @@ public class PlatformMover : MonoBehaviour
                         movedPassengers.Add(hit.transform);
                         float pushX = velocity.x;
                         float pushY = velocity.y;
-
                         passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), true, false));
                     }
                 }
@@ -275,33 +290,11 @@ public class PlatformMover : MonoBehaviour
     }
 
     //holds data that will not be modified later
-    //struct RaycastOrigins
-    //{
-    //    public Vector2 topLeft, topRight;
-    //    public Vector2 bottomLeft, bottomRight;
-    //}
-
-    //public struct CollisionInfo
-    //{
-    //    public bool above, below;
-    //    public bool left, right;
-
-    //    public bool climbingSlope;
-    //    public bool descendingSlope;
-    //    public float slopeAngle, slopeAngleOld;
-    //    public Vector3 velocityOld;
-
-    //    //resets all bools to false
-    //    public void Reset()
-    //    {
-    //        above = below = false;
-    //        left = right = false;
-    //        climbingSlope = false;
-    //        descendingSlope = false;
-
-    //        slopeAngleOld = slopeAngle;
-    //    }
-    //}
+    struct RaycastOrigins
+    {
+        public Vector2 topLeft, topRight;
+        public Vector2 bottomLeft, bottomRight;
+    }
 
     struct PassengerMovement
     {

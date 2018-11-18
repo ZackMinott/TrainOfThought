@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))] //adds boxCollider2D to gameObject
+//[RequireComponent(typeof(Collider2D))] //adds boxCollider2D to gameObject
 public class PlayerController : MonoBehaviour {
     public LayerMask collisionMask; //determines which objects we want to collide with
 
@@ -18,13 +18,13 @@ public class PlayerController : MonoBehaviour {
     float horizontalRaySpacing;
     float verticalRaySpacing;
 
-    BoxCollider2D collider;
+    Collider2D collider;
     RaycastOrigins raycastOrigins;
     public CollisionInfo collisions;
 
     private void Start()
     {
-        collider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<Collider2D>();
 
         CalculateRaySpacing();
     }
