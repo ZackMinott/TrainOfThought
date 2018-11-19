@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerController))] //Automatically adds required component to gameObject
 public class Player1 : MonoBehaviour {
@@ -199,6 +200,11 @@ public class Player1 : MonoBehaviour {
         {
             inLight = true;
             normParticles.SetActive(true);
+        }
+
+        if (col.gameObject.tag == "portal")
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

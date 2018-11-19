@@ -45,7 +45,6 @@ public class PlatformMover : MonoBehaviour
     BoxCollider2D collider;
     Rigidbody2D rigidbody;
     RaycastOrigins raycastOrigins;
-    public CollisionInfo collisions;
 
     List<PassengerMovement> passengerMovement;
     Dictionary<Transform, PlayerController> passengerDictionary = new Dictionary<Transform, PlayerController>();
@@ -109,7 +108,7 @@ public class PlatformMover : MonoBehaviour
         }
     }
 
-    public void OnCollisionExit2D(Collision2D collision)
+   public void OnCollisionExit2D(Collision2D collision)
     {
         if (activateOnTouch)
         {
@@ -206,7 +205,7 @@ public class PlatformMover : MonoBehaviour
                     {
                         movedPassengers.Add(hit.transform);
                         float pushX = (directionY == 1) ? velocity.x : 0;
-                        float pushY = velocity.y - (hit.distance - skinWidth) * directionY;
+                        float pushY = (velocity.y - (hit.distance - skinWidth)) * directionY;
 
                         passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), directionY == 1, true));
                     }
@@ -258,7 +257,6 @@ public class PlatformMover : MonoBehaviour
                         movedPassengers.Add(hit.transform);
                         float pushX = velocity.x;
                         float pushY = velocity.y;
-
                         passengerMovement.Add(new PassengerMovement(hit.transform, new Vector3(pushX, pushY), true, false));
                     }
                 }
@@ -296,28 +294,6 @@ public class PlatformMover : MonoBehaviour
     {
         public Vector2 topLeft, topRight;
         public Vector2 bottomLeft, bottomRight;
-    }
-
-    public struct CollisionInfo
-    {
-        public bool above, below;
-        public bool left, right;
-
-        public bool climbingSlope;
-        public bool descendingSlope;
-        public float slopeAngle, slopeAngleOld;
-        public Vector3 velocityOld;
-
-        //resets all bools to false
-        public void Reset()
-        {
-            above = below = false;
-            left = right = false;
-            climbingSlope = false;
-            descendingSlope = false;
-
-            slopeAngleOld = slopeAngle;
-        }
     }
 
     struct PassengerMovement
