@@ -18,8 +18,8 @@ public class Paralaxing : MonoBehaviour
     private bool playerMoved = false;
 
     //Moving player and time oriented stuff
-    private bool MovingLeft = false;
-    private bool MovingRight = false;
+    public bool MovingLeft = false;
+    public bool MovingRight = false;
     private float PlayerInput;
     private float TimePassed = 0;
     private float CurrentTime;
