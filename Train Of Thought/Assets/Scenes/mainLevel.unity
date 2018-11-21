@@ -2193,9 +2193,9 @@ MonoBehaviour:
   moveLimitObj4Left: 4
   moveLimitObj4Right: 4
   moveSpeedObj1: 0.0009
-  moveSpeedObj2: 0.003
-  moveSpeedObj3: 0.004
-  moveSpeedObj4: 0.006
+  moveSpeedObj2: 0.004
+  moveSpeedObj3: 0.006
+  moveSpeedObj4: 0.009
 --- !u!1001 &823911054
 Prefab:
   m_ObjectHideFlags: 0
