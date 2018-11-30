@@ -123,6 +123,8 @@ public class Player1 : MonoBehaviour {
         {
             targetVelocityX = input.x * normalMoveSpeed;
             Jump(normalJumpVelocity); //normal jump
+            norm.SetActive(true);
+            shadow.SetActive(false);
             if (Input.GetKeyDown(KeyCode.E) && inLight)
             {
                 PlayerSwitch();
@@ -135,6 +137,8 @@ public class Player1 : MonoBehaviour {
             if (!controller.collisions.below)
                 targetVelocityX = input.x * 0;
             Jump(shadowJumpVelocity); //shadow jump
+            norm.SetActive(false);
+            shadow.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && !inGlass)
             {
                 PlayerSwitch();
@@ -166,8 +170,8 @@ public class Player1 : MonoBehaviour {
         if (isNormalForm && inLight)
         {
             isNormalForm = false;
-            norm.SetActive(false);
-            shadow.SetActive(true);
+           // norm.SetActive(false);
+           // shadow.SetActive(true);
             normParticles.SetActive(false);
             changed = false;
             virtualCamera.GetComponent<CameraShake>().initiateShake();
@@ -175,8 +179,8 @@ public class Player1 : MonoBehaviour {
         else if (isNormalForm == false)
         {
             isNormalForm = true;
-            shadow.SetActive(false);
-            norm.SetActive(true);
+           // shadow.SetActive(false);
+           // norm.SetActive(true);
             normParticles.SetActive(true);
             if (!inLight)
                 normParticles.SetActive(false);

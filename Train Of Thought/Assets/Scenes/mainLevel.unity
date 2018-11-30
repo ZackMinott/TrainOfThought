@@ -1451,6 +1451,11 @@ Prefab:
       propertyPath: normalMoveSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114553090148327190, guid: 8e365aa4d58bf72489e63e7b4d118b2e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61309877539574040, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
