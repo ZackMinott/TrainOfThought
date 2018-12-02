@@ -147,7 +147,7 @@ public class Paralaxing : MonoBehaviour
             }
             if (Background2Pos < Background2PosOrig + moveLimitObj2Left)
             {
-                Background2.transform.position = new Vector3(Background2.transform.position.x + moveSpeedObj2, Background1.transform.position.y, Background2.transform.position.z);
+                Background2.transform.position = new Vector3(Background2.transform.position.x + moveSpeedObj2, Background2.transform.position.y, Background2.transform.position.z);
                 Background2Pos += moveSpeedObj2;
             }
             if (Background3Pos < Background3PosOrig + moveLimitObj3Left)

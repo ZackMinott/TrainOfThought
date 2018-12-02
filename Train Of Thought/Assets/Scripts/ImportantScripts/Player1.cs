@@ -12,6 +12,7 @@ public class Player1 : MonoBehaviour {
 
 
     public double TimePassed; // this is in case we want to include time based scenarios
+    public double Timeswitched;
 
     [Header("Normal Atrributes")]
     public float normalJumpHeight = 4; //how high we want the character to jump
@@ -33,7 +34,8 @@ public class Player1 : MonoBehaviour {
     public bool isGrounded = true;
     public bool inLight = false;
     public bool is_Right = true; // needed to turn sprite left or right
-    public bool changed = false;
+    public bool changed;
+    private int numbertimeschanged = 1;
     public bool inGlass = false;
     public bool playerCanMove = true; //will change back to false
 
@@ -66,8 +68,9 @@ public class Player1 : MonoBehaviour {
 
     private void Update()
     {
+        TimePassed += Time.deltaTime;
         //sets y velocity to zero if colliding with any object
-        if(controller.collisions.above || controller.collisions.below)
+        if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0; //keeps gravity from accumulating when colliding with an object
 
@@ -88,22 +91,25 @@ public class Player1 : MonoBehaviour {
         * 
         * This is the Animation 
         * */
-
+        if (changed && TimePassed - Timeswitched > .5)
+        {
+            changed = false;
+        }
         if (isNormalForm)
         {
             My_AnimationNormal.SetFloat("Running", Mathf.Abs(input.x * normalMoveSpeed)); // Sets the parameter for running so that if the speed is above 0 it will proceed with the running animation
             My_AnimationNormal.SetBool("Ground", isGrounded);
             My_AnimationNormal.SetBool("Changed", changed);
         }
-        else
+        else if(!isNormalForm)
         {
-            My_AnimationShadow.SetFloat("Run", Mathf.Abs(input.x * normalMoveSpeed));
+            My_AnimationShadow.SetFloat("Run", Mathf.Abs(input.x * shadowMoveSpeed));
             My_AnimationShadow.SetBool("Ground", isGrounded);
             My_AnimationShadow.SetBool("Changed", changed);
         }
         if (is_Right)
         {
-            if (input.x * normalMoveSpeed < 0)
+            if (input.x * normalMoveSpeed < 0 || input.x * shadowMoveSpeed < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
                 is_Right = false;
@@ -111,7 +117,7 @@ public class Player1 : MonoBehaviour {
         }
         else
         {
-            if (input.x * normalMoveSpeed > 0)
+            if (input.x * normalMoveSpeed > 0 || input.x * shadowMoveSpeed > 0)
             {
                 transform.localScale = new Vector3(1, 1, 1);
                 is_Right = true;
@@ -123,8 +129,8 @@ public class Player1 : MonoBehaviour {
         {
             targetVelocityX = input.x * normalMoveSpeed;
             Jump(normalJumpVelocity); //normal jump
-            norm.SetActive(true);
             shadow.SetActive(false);
+            norm.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && inLight)
             {
                 PlayerSwitch();
@@ -153,7 +159,8 @@ public class Player1 : MonoBehaviour {
         if (isNormalForm)
         {
             velocity.y += normGravity * Time.deltaTime; //applies gravity to velocity
-        } else if (!isNormalForm)
+        }
+        else if (!isNormalForm)
         {
             velocity.y += shadowGravity * Time.deltaTime; //applies gravity to velocity
         }
@@ -164,28 +171,28 @@ public class Player1 : MonoBehaviour {
 
     }
 
-    void PlayerSwitch()
+    private void PlayerSwitch()
     {
         changed = true;
+        Timeswitched = TimePassed;
         if (isNormalForm && inLight)
         {
             isNormalForm = false;
-           // norm.SetActive(false);
-           // shadow.SetActive(true);
+            //norm.SetActive(false);
+            //shadow.SetActive(true)
             normParticles.SetActive(false);
-            changed = false;
             virtualCamera.GetComponent<CameraShake>().initiateShake();
         }
         else if (isNormalForm == false)
         {
             isNormalForm = true;
-           // shadow.SetActive(false);
-           // norm.SetActive(true);
+            //shadow.SetActive(false);
+            //norm.SetActive(true);
             normParticles.SetActive(true);
             if (!inLight)
                 normParticles.SetActive(false);
-            changed = false;
             virtualCamera.GetComponent<CameraShake>().initiateShake();
+            My_AnimationShadow.SetTrigger("Change");
         }
     }
 
@@ -203,7 +210,10 @@ public class Player1 : MonoBehaviour {
         if (col.gameObject.tag == "lightsource")
         {
             inLight = true;
-            normParticles.SetActive(true);
+            if (isNormalForm)
+            {
+                normParticles.SetActive(true);
+            }
         }
 
         if (col.gameObject.tag == "portal")
@@ -216,12 +226,15 @@ public class Player1 : MonoBehaviour {
     //for exiting light
     private void OnTriggerExit2D(Collider2D col)
     {
+
         if (col.gameObject.tag == "lightsource")
         {
             inLight = false;
             normParticles.SetActive(false);
-            if (!isNormalForm) //switches back to normal when leaving light source
-                PlayerSwitch();
+            if (!isNormalForm)
+            {//switches back to normal when leaving light source
+             PlayerSwitch();
+            }
         }
     }
 
