@@ -18,6 +18,7 @@ public class Player1 : MonoBehaviour {
     public float normalJumpHeight = 4; //how high we want the character to jump
     public float normalTimeToJump = .4f; //how long character takes to reach highest point
     public float normalMoveSpeed = 6;
+    public float maxFall = 25; //max distance can fall before dying
     [Header("Shadow Attributes")]
     public float shadowJumpHeight = 7;
     public float shadowTimeToJump = .6f;
@@ -48,6 +49,7 @@ public class Player1 : MonoBehaviour {
     float shadowJumpVelocity;
     Vector3 velocity;
     float velocityXSmoothing;
+    float fallDistance; //used to detect death
 
     PlayerController controller;
     Rigidbody2D rb2d;
@@ -78,6 +80,11 @@ public class Player1 : MonoBehaviour {
         if (controller.collisions.below)
         {
             isGrounded = false;
+            if (fallDistance > maxFall)
+            {
+                Object.Destroy(this.transform.gameObject);
+            }
+            fallDistance = 0;
         }
         else
         {
@@ -167,7 +174,10 @@ public class Player1 : MonoBehaviour {
         
         if(playerCanMove)
             controller.Move(velocity * Time.deltaTime);
-
+        if (velocity.y < 0)
+        {
+            fallDistance -= velocity.y * Time.deltaTime;
+        }
 
     }
 

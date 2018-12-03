@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
             VerticalCollisions(ref velocity);
         }
 
-        transform.Translate(velocity);
+        transform.position = transform.position + velocity;
 
         if (standingOnPlatform)
         {
