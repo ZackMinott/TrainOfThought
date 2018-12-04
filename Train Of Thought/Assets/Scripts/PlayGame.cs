@@ -16,5 +16,10 @@ public class PlayGame : MonoBehaviour
     {
         Debug.Log("Quitting Game");
     }
+
+    public void OpenCredits()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
 }
 	    
