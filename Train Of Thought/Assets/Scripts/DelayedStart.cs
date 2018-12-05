@@ -2,60 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DelayedStart : MonoBehaviour {
-    public GameObject PlayerController;
+public class DelayedStart : MonoBehaviour
+{
+    public Player1 PlayerController;
     public GameObject FFStart;
     public GameObject FFFormBox;
    
     public GameObject FFEnd;
     public GameObject FFLight;
-    public GameObject Shadow;
-    public GameObject Normal;
-    public bool goPlayEnd = false;
+
+    public float initialDelay= 1f;
+    public float controlReleaseDelay = 1f;
  
     // Use this for initialization
-    void Start () {
-        StartCoroutine("StartDelay");
+    private void Start ()
+    {
+        StartCoroutine(CoStartDelay());
        
     }
 
-    public void Update()
+    private IEnumerator CoStartDelay()
     {
-        if (Input.GetButtonDown("Horizontal") && goPlayEnd == true)
+        PlayerController.enabled = false;
+        yield return new WaitForSeconds(initialDelay); // Wait to turn on
+        Debug.Log("waited");
+        //PlayIdle();
+
+        FFFormBox.SetActive(true);
+        FFLight.SetActive(true);
+
+        PlayerController.SetForm(false);
+
+        bool done = false;
+        while(!done)
         {
-            FFFormBox.SetActive(false);
-          
-            FFEnd.SetActive(true);
-            Normal.SetActive(true);
-            Shadow.SetActive(false);
-            FFLight.SetActive(false);
+            // Basically Update
+            if(Input.GetButtonDown("Horizontal"))
+            {
+                done = true;
+            }
+            yield return null;
         }
 
-    }
+        // Remove Box
+        FFFormBox.SetActive(false);
+        FFLight.SetActive(false);
 
-    IEnumerator StartDelay()
-    {
-        
-        yield return new WaitForSeconds(1);
-        Debug.Log("waited");
-        PlayIdle();
-        
-    }
-    public void PlayIdle()
-    {
-        FFFormBox.SetActive(true);
-      
-        Shadow.SetActive(true);
-        Normal.SetActive(false);
-        FFLight.SetActive(true);
-        StartCoroutine("FFFormBoxDelay");
-    }
+        FFEnd.SetActive(true);
 
-    IEnumerator FFFormBoxDelay()
-    {
-        yield return new WaitForSeconds(1);
-        PlayerController.GetComponent<Player1>().enabled = true;
-        goPlayEnd = true;
+        PlayerController.SetForm(true);
+        yield return new WaitForSeconds(controlReleaseDelay);
+
+        PlayerController.enabled = true;
+
     }
    
 }

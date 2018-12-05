@@ -30,9 +30,11 @@ public class Player1 : MonoBehaviour {
     public GameObject normParticles;
     public GameObject virtualCamera;
 
-    [HideInInspector]
+
     public bool isNormalForm = true;
-    public bool isGrounded = true;
+    public bool isGrounded=false;
+    public bool isSRunning;
+    public bool isNRunning;
     public bool inLight = false;
     public bool is_Right = true; // needed to turn sprite left or right
     public bool changed;
@@ -70,6 +72,8 @@ public class Player1 : MonoBehaviour {
 
     private void Update()
     {
+        //if (isFrozen) return;
+
         TimePassed += Time.deltaTime;
         //sets y velocity to zero if colliding with any object
         if (controller.collisions.above || controller.collisions.below)
@@ -77,9 +81,10 @@ public class Player1 : MonoBehaviour {
             velocity.y = 0; //keeps gravity from accumulating when colliding with an object
 
         }
+       
         if (controller.collisions.below)
         {
-            isGrounded = false;
+            isGrounded = true;
             if (fallDistance > maxFall)
             {
                 Object.Destroy(this.transform.gameObject);
@@ -88,8 +93,9 @@ public class Player1 : MonoBehaviour {
         }
         else
         {
-            isGrounded = true;
+            isGrounded = false;
         }
+       
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         float targetVelocityX = 0;
@@ -106,13 +112,37 @@ public class Player1 : MonoBehaviour {
         {
             My_AnimationNormal.SetFloat("Running", Mathf.Abs(input.x * normalMoveSpeed)); // Sets the parameter for running so that if the speed is above 0 it will proceed with the running animation
             My_AnimationNormal.SetBool("Ground", isGrounded);
-            My_AnimationNormal.SetBool("Changed", changed);
+           
+            My_AnimationNormal.SetBool("isRunning", isNRunning);
+            if (Input.GetButton("Horizontal"))
+            {
+
+                isNRunning = true;
+                //isSRunning = false;
+            }
+            else
+            {
+                isNRunning = false;
+            }
         }
         else if(!isNormalForm)
         {
             My_AnimationShadow.SetFloat("Run", Mathf.Abs(input.x * shadowMoveSpeed));
             My_AnimationShadow.SetBool("Ground", isGrounded);
-            My_AnimationShadow.SetBool("Changed", changed);
+            
+            My_AnimationShadow.SetBool("isRunning", isSRunning);
+
+         
+            if (Input.GetButton("Horizontal"))
+            {
+
+                isSRunning = true;
+                //isSRunning = false;
+            }
+            else
+            {
+                isSRunning = false;
+            }
         }
         if (is_Right)
         {
@@ -136,8 +166,8 @@ public class Player1 : MonoBehaviour {
         {
             targetVelocityX = input.x * normalMoveSpeed;
             Jump(normalJumpVelocity); //normal jump
-            shadow.SetActive(false);
-            norm.SetActive(true);
+            //shadow.SetActive(false);
+            //norm.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && inLight)
             {
                 PlayerSwitch();
@@ -150,8 +180,8 @@ public class Player1 : MonoBehaviour {
             if (!controller.collisions.below)
                 targetVelocityX = input.x * 0;
             Jump(shadowJumpVelocity); //shadow jump
-            norm.SetActive(false);
-            shadow.SetActive(true);
+            //norm.SetActive(false);
+            //shadow.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && !inGlass)
             {
                 PlayerSwitch();
@@ -159,7 +189,7 @@ public class Player1 : MonoBehaviour {
         }
         //WORK WITH THIS
 
-        
+  
 
         //Smooth Damp gradually changes a value towards a desired goal over time
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)? accelerationTimeGrounded:0); //Smooths the players movement on switching directions
@@ -181,28 +211,43 @@ public class Player1 : MonoBehaviour {
 
     }
 
-    private void PlayerSwitch()
+    public void SetForm(bool isNormal)
     {
+        if (isNormal == isNormalForm) return;
+
         changed = true;
         Timeswitched = TimePassed;
+
+        isNormalForm = isNormal;
+        norm.SetActive(isNormal);
+        shadow.SetActive(!isNormal);
+        normParticles.SetActive(isNormal);
+        virtualCamera.GetComponent<CameraShake>().initiateShake();
+
+        if (isNormal == false) // Set to Shadow
+        {
+            My_AnimationShadow.Play("SwitchToShadow", 0);
+        }
+        else
+        {
+            if (!inLight) // Still necessary?
+                normParticles.SetActive(false);
+
+            //My_AnimationShadow.SetTrigger("Change");
+            My_AnimationNormal.Play("SwitchToPerson", 0);
+        }
+    }
+    
+
+    private void PlayerSwitch()
+    {
         if (isNormalForm && inLight)
         {
-            isNormalForm = false;
-            //norm.SetActive(false);
-            //shadow.SetActive(true)
-            normParticles.SetActive(false);
-            virtualCamera.GetComponent<CameraShake>().initiateShake();
+            SetForm(false);
         }
         else if (isNormalForm == false)
         {
-            isNormalForm = true;
-            //shadow.SetActive(false);
-            //norm.SetActive(true);
-            normParticles.SetActive(true);
-            if (!inLight)
-                normParticles.SetActive(false);
-            virtualCamera.GetComponent<CameraShake>().initiateShake();
-            My_AnimationShadow.SetTrigger("Change");
+            SetForm(true);
         }
     }
 
@@ -210,7 +255,16 @@ public class Player1 : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
         {
+            
             velocity.y = jumpVelocity;
+            if(isNormalForm == true)
+            {
+                My_AnimationNormal.Play("NJumpTakeOff");
+            }
+            else
+            {
+                My_AnimationShadow.Play("NJumpTakeOff");
+            }
         }
     }
 
@@ -242,8 +296,9 @@ public class Player1 : MonoBehaviour {
             inLight = false;
             normParticles.SetActive(false);
             if (!isNormalForm)
-            {//switches back to normal when leaving light source
-             PlayerSwitch();
+            {
+                //switches back to normal when leaving light source
+                //PlayerSwitch();
             }
         }
     }

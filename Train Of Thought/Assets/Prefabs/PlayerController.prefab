@@ -250,6 +250,8 @@ MonoBehaviour:
   virtualCamera: {fileID: 0}
   isNormalForm: 1
   isGrounded: 1
+  isSRunning: 0
+  isNRunning: 0
   inLight: 0
   is_Right: 1
   changed: 0
