@@ -299,7 +299,7 @@ public class Player1 : MonoBehaviour {
             if (!isNormalForm)
             {
                 //switches back to normal when leaving light source
-                //PlayerSwitch();
+                PlayerSwitch();
             }
         }
     }
