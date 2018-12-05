@@ -104,9 +104,10 @@ public class Player1 : MonoBehaviour {
         * 
         * This is the Animation 
         * */
-        if (changed && TimePassed - Timeswitched > .5)
+        if (!isNormalForm && changed && TimePassed - Timeswitched > .01)
         {
             changed = false;
+            My_AnimationShadow.Play("SwitchToShadow", 0);
         }
         if (isNormalForm)
         {
@@ -226,7 +227,7 @@ public class Player1 : MonoBehaviour {
 
         if (isNormal == false) // Set to Shadow
         {
-            My_AnimationShadow.Play("SwitchToShadow", 0);
+            //My_AnimationShadow.Play("SwitchToShadow", 0);
         }
         else
         {
