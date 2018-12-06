@@ -289,7 +289,7 @@ public class Player1 : MonoBehaviour {
 
         if (col.gameObject.tag == "portal")
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("newMM");
         }
 
         if (col.gameObject.tag == "transporter" && TimePassed > NextTeleportTime)
