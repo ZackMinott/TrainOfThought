@@ -7,7 +7,7 @@ public class ButtonScript : MonoBehaviour {
     public bool pressDirectionPositive = true; //the direction the button needs to be pressed from, positive on the axis or negative on the axis
     public bool isXButton = false; //the axis the ubtton operates on, True for X Axis, false for Y Axis
     public float distance = 1.0f; //how far the button travels when pressed
-    private bool isPushed = false; //whether the button has been pushed
+    [HideInInspector]public bool isPushed = false; //whether the button has been pushed
 
     // Use this for initialization
     private void OnCollisionEnter2D(Collision2D collision)
