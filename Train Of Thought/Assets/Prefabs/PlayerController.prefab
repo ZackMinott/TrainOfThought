@@ -236,6 +236,7 @@ MonoBehaviour:
   My_AnimationNormal: {fileID: 95537816059095616}
   My_AnimationShadow: {fileID: 95477248984849678}
   TimePassed: 0
+  TeleportCooldown: 1
   Timeswitched: 0
   normalJumpHeight: 2
   normalTimeToJump: 0.45

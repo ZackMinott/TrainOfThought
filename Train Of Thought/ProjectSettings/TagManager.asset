@@ -12,6 +12,7 @@ TagManager:
   - glass
   - Effects
   - portal
+  - transporter
   layers:
   - Default
   - TransparentFX

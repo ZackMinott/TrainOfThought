@@ -12,6 +12,7 @@ public class Player1 : MonoBehaviour {
 
 
     public double TimePassed; // this is in case we want to include time based scenarios
+    public double TeleportCooldown = 1;
     public double Timeswitched;
 
     [Header("Normal Atrributes")]
@@ -53,6 +54,8 @@ public class Player1 : MonoBehaviour {
     Vector3 velocity;
     float velocityXSmoothing;
     float fallDistance; //used to detect death
+
+    double NextTeleportTime;
 
     PlayerController controller;
     Rigidbody2D rb2d;
@@ -287,6 +290,12 @@ public class Player1 : MonoBehaviour {
         if (col.gameObject.tag == "portal")
         {
             SceneManager.LoadScene("MainMenu");
+        }
+
+        if (col.gameObject.tag == "transporter" && TimePassed > NextTeleportTime)
+        {
+           transform.position = col.GetComponent<TransportScript>().linkedTransporter.transform.position;
+            NextTeleportTime = TimePassed + TeleportCooldown;
         }
     }
 
