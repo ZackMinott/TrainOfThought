@@ -10,12 +10,14 @@ public class DestroyTrap : MonoBehaviour {
 
     void Start()
     {
+        if (button == null) return;
         buttonPressed = button.GetComponent<ButtonScript>();
     }
 
     void Update()
     {
-        if(buttonPressed.isPushed == true)
+        if (buttonPressed == null) return;
+        if (buttonPressed.isPushed == true)
         {
             StartCoroutine("destruction");
         }
