@@ -1366,7 +1366,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4556154424628294, guid: b652a8930801516408639a2533b24893, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.93
+      value: -11.99
       objectReference: {fileID: 0}
     - target: {fileID: 4556154424628294, guid: b652a8930801516408639a2533b24893, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1569,7 +1569,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4561885979260898, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.93
+      value: -11.99
       objectReference: {fileID: 0}
     - target: {fileID: 4561885979260898, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2332,7 +2332,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4089801092222854, guid: b2e5f30f2fe733d4c88591e02581124c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.93
+      value: -11.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2e5f30f2fe733d4c88591e02581124c, type: 2}
@@ -3561,22 +3561,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 370906151}
-    - target: {fileID: 4910467867149270, guid: 009340b124d83a248b85f90cafb9eff7, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4910467867149270, guid: 009340b124d83a248b85f90cafb9eff7, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4910467867149270, guid: 009340b124d83a248b85f90cafb9eff7, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -4.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4910467867149270, guid: 009340b124d83a248b85f90cafb9eff7, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 27.45
-      objectReference: {fileID: 0}
     - target: {fileID: 1434005139139836, guid: 009340b124d83a248b85f90cafb9eff7, type: 2}
       propertyPath: m_Name
       value: GlassWalls (1)
