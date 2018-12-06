@@ -76,6 +76,12 @@ public class Paralaxing : MonoBehaviour
 
     private void Update()
     {
+        if(Player == null)
+        {
+            Debug.LogWarning("Player Missing!");
+            return;
+        }
+
         //time needed for player detection
         CurrentTime += Time.deltaTime;
         CurrentPosPlayer = Player.transform.position.x;

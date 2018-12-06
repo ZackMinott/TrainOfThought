@@ -313,6 +313,7 @@ public class Player1 : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Trap")
         {
+            Debug.Log("Player Died!");
             Death();
         }
     }
