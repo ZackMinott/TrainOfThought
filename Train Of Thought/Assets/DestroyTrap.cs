@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DestroyTrap : MonoBehaviour {
     [SerializeField] GameObject button;
+    [SerializeField] float secondsToDestroy;
 
     ButtonScript buttonPressed;
 
@@ -22,7 +23,7 @@ public class DestroyTrap : MonoBehaviour {
 
     IEnumerator destruction()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(secondsToDestroy);
         Destroy(gameObject);
     }
 }
