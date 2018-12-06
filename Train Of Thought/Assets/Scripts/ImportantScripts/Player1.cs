@@ -91,7 +91,7 @@ public class Player1 : MonoBehaviour {
             isGrounded = true;
             if (fallDistance > maxFall)
             {
-                Object.Destroy(this.transform.gameObject);
+                Death();
             }
             fallDistance = 0;
         }
@@ -275,6 +275,11 @@ public class Player1 : MonoBehaviour {
         }
     }
 
+    void Death()
+    {
+        Object.Destroy(this.transform.gameObject);
+    }
+
     //for checking light, allows to turn into shadow
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -296,6 +301,19 @@ public class Player1 : MonoBehaviour {
         {
            transform.position = col.GetComponent<TransportScript>().linkedTransporter.transform.position;
             NextTeleportTime = TimePassed + TeleportCooldown;
+        }
+
+        if (col.gameObject.tag == "Trap")
+        {
+            Death();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Trap")
+        {
+            Death();
         }
     }
 

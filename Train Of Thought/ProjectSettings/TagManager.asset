@@ -13,6 +13,7 @@ TagManager:
   - Effects
   - portal
   - transporter
+  - Trap
   layers:
   - Default
   - TransparentFX
