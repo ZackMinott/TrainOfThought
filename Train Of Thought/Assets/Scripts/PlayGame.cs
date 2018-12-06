@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayGame : MonoBehaviour
 {
-
+    public LevelFade LevelFade;
+    public bool GameStart = false;
 
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameStart = true;
+        LevelFade.ButtonPressed = true;
     }
 
     public void QuitGame()
