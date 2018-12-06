@@ -227,7 +227,7 @@ public class Player1 : MonoBehaviour {
 
         if (isNormal == false) // Set to Shadow
         {
-            //My_AnimationShadow.Play("SwitchToShadow", 0);
+            My_AnimationShadow.Play("SwitchToShadow", 0);
         }
         else
         {
@@ -299,7 +299,7 @@ public class Player1 : MonoBehaviour {
             if (!isNormalForm)
             {
                 //switches back to normal when leaving light source
-                //PlayerSwitch();
+                PlayerSwitch();
             }
         }
     }
