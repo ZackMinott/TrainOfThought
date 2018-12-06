@@ -242,7 +242,7 @@ MonoBehaviour:
   normalTimeToJump: 0.45
   normalMoveSpeed: 6
   maxFall: 25
-  shadowJumpHeight: 7
+  shadowJumpHeight: 7.5
   shadowTimeToJump: 0.8
   shadowMoveSpeed: 12
   norm: {fileID: 1356198851079968}
