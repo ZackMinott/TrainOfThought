@@ -1366,7 +1366,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4556154424628294, guid: b652a8930801516408639a2533b24893, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.93
+      value: -11.930001
       objectReference: {fileID: 0}
     - target: {fileID: 4556154424628294, guid: b652a8930801516408639a2533b24893, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1401,6 +1401,11 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 370906151}
+    - target: {fileID: 82052331428869618, guid: b652a8930801516408639a2533b24893,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b5564c3a9b53bfd42a4628533ff428a2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b652a8930801516408639a2533b24893, type: 2}
   m_IsPrefabAsset: 0
@@ -2246,7 +2251,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4089801092222854, guid: b2e5f30f2fe733d4c88591e02581124c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.93
+      value: -11.930001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2e5f30f2fe733d4c88591e02581124c, type: 2}
