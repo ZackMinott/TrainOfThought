@@ -29,6 +29,7 @@ public class Player1 : MonoBehaviour {
     public GameObject shadow;
     public GameObject normParticles;
     public GameObject virtualCamera;
+    public AudioSource switchSound;
 
 
     public bool isNormalForm = true;
@@ -170,7 +171,7 @@ public class Player1 : MonoBehaviour {
             //shadow.SetActive(false);
             //norm.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && inLight)
-            {
+            {   
                 PlayerSwitch();
             }
 
@@ -244,10 +245,12 @@ public class Player1 : MonoBehaviour {
     {
         if (isNormalForm && inLight)
         {
+            switchSound.Play();
             SetForm(false);
         }
         else if (isNormalForm == false)
         {
+            switchSound.Play();
             SetForm(true);
         }
     }
