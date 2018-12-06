@@ -1642,11 +1642,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4556154424628294, guid: b652a8930801516408639a2533b24893, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12.970001
+      value: -11.530001
       objectReference: {fileID: 0}
     - target: {fileID: 4556154424628294, guid: b652a8930801516408639a2533b24893, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.82
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 4556154424628294, guid: b652a8930801516408639a2533b24893, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2018,11 +2018,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4561885979260898, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12.97
+      value: -11.53
       objectReference: {fileID: 0}
     - target: {fileID: 4561885979260898, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.82
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 4561885979260898, guid: 8e365aa4d58bf72489e63e7b4d118b2e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2865,11 +2865,11 @@ Prefab:
       objectReference: {fileID: 370906156}
     - target: {fileID: 4089801092222854, guid: b2e5f30f2fe733d4c88591e02581124c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.82
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 4089801092222854, guid: b2e5f30f2fe733d4c88591e02581124c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12.970001
+      value: -11.530001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2e5f30f2fe733d4c88591e02581124c, type: 2}
@@ -4884,7 +4884,7 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1534277434}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
