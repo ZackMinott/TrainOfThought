@@ -4802,7 +4802,7 @@ GameObject:
   - component: {fileID: 12275581}
   - component: {fileID: 12275580}
   - component: {fileID: 12275579}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5112,7 +5112,7 @@ GameObject:
   - component: {fileID: 61822958}
   - component: {fileID: 61822957}
   - component: {fileID: 61822956}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PauseCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15175,7 +15175,7 @@ GameObject:
   - component: {fileID: 493841605}
   - component: {fileID: 493841607}
   - component: {fileID: 493841606}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29908,7 +29908,7 @@ GameObject:
   - component: {fileID: 829110792}
   - component: {fileID: 829110794}
   - component: {fileID: 829110793}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30064,7 +30064,7 @@ GameObject:
   - component: {fileID: 836722836}
   - component: {fileID: 836722835}
   - component: {fileID: 836722834}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30139,7 +30139,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &836722835
@@ -30372,7 +30372,7 @@ GameObject:
   - component: {fileID: 921472340}
   - component: {fileID: 921472339}
   - component: {fileID: 921472338}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30587,7 +30587,7 @@ GameObject:
   - component: {fileID: 977039423}
   - component: {fileID: 977039422}
   - component: {fileID: 977039421}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30997,7 +30997,7 @@ GameObject:
   - component: {fileID: 1129674678}
   - component: {fileID: 1129674680}
   - component: {fileID: 1129674679}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36540,6 +36540,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4635853350808288, guid: a97f93063a0bb6646810d4884b4c4aa3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -8.24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a97f93063a0bb6646810d4884b4c4aa3, type: 2}
   m_IsPrefabAsset: 0
@@ -36736,7 +36740,7 @@ GameObject:
   - component: {fileID: 1391451770}
   - component: {fileID: 1391451772}
   - component: {fileID: 1391451771}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42167,7 +42171,7 @@ GameObject:
   - component: {fileID: 1748727813}
   - component: {fileID: 1748727815}
   - component: {fileID: 1748727814}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

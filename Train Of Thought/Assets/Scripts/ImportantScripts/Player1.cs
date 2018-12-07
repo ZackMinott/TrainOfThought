@@ -278,6 +278,8 @@ public class Player1 : MonoBehaviour {
     void Death()
     {
         Object.Destroy(this.transform.gameObject);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(2);
     }
 
     //for checking light, allows to turn into shadow
@@ -294,7 +296,7 @@ public class Player1 : MonoBehaviour {
 
         if (col.gameObject.tag == "portal")
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(0);
         }
 
         if (col.gameObject.tag == "transporter" && TimePassed > NextTeleportTime)
@@ -314,7 +316,7 @@ public class Player1 : MonoBehaviour {
         if(collision.gameObject.tag == "Trap")
         {
             Debug.Log("Player Died!");
-            Death();
+            SceneManager.LoadScene(2);
         }
     }
 
