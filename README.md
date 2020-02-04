@@ -6,3 +6,6 @@ Description: A 2D puzzle platformer
 
 ## PLAY THE GAME 
 https://kimmarzo.itch.io/derailed
+
+## Look at the code
+https://github.com/ZackMinott/TrainOfThought/tree/master/Train%20Of%20Thought/Assets/Scripts
